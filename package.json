@@ -1,0 +1,29 @@
+{
+  "name": "imap-scan-many-boxes",
+  "version": "0.0.0",
+  "description": "Scan multiple IMAP boxes and emit for every message found.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saibotsivad/imap-scan-many-boxes.git"
+  },
+  "keywords": [
+    "imap"
+  ],
+  "author": "saibotsivad",
+  "license": "VOL",
+  "bugs": {
+    "url": "https://github.com/saibotsivad/imap-scan-many-boxes/issues"
+  },
+  "homepage": "https://github.com/saibotsivad/imap-scan-many-boxes#readme",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "imap-scan-box": "^1.0.2",
+    "p-queue": "^1.0.0"
+  }
+}
