@@ -1,6 +1,6 @@
 {
   "name": "imap-scan-many-boxes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scan multiple IMAP boxes and emit for every message found.",
   "main": "index.js",
   "scripts": {
