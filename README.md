@@ -20,7 +20,7 @@ const imap = new Imap({
 	tls: true
 })
 
-const boxNames = [
+const boxes = [
 	'INBOX',
 	'INBOX.neat-folder'
 ]
@@ -31,10 +31,10 @@ const fetch = { // data to include in message bodies
 
 // must wait until imap is ready
 imap.once('ready', () => {
-	const scanner = scanBoxes(imap, boxNames, range, fetch)
+	const scanner = scanBoxes({ imap, boxes, range, fetch })
 	// emitted messages emit the streaming object
 	scanner.on('message', ({ stream, box }) => {
-		console.log('box') // => 'INBOX' or 'INBOX.neat-folder'
+		console.log(box) // => 'INBOX' or 'INBOX.neat-folder'
 
 		let body = ''
 
@@ -53,24 +53,27 @@ imap.once('ready', () => {
 })
 ```
 
-### `imap`
+### `scanBoxes(Object)`
+
+The module takes an object with the following properties:
+
+#### `imap`
 
 The instance of `imap` provided must be instantiated and
 have already emitted the `ready` event.
 
-Note also that the imap module does not support opening
-multiple boxes at one time. You will need to establish
-a single-thread queue to process multiple boxes.
+> Note: The IMAP protocol (or at least the `imap` module) does not
+> support scanning multiple boxes simultaneously. 😭
 
-### `boxNames` *(array of strings)*
+#### `boxes` *(array of strings)*
 
-An array of strings which are the box names.
+An array of box names, e.g. `[ 'INBOX', 'INBOX.my-folder' ]`.
 
-### `range` *(string, default `1:*`)*
+#### `range` *(string, default `1:*`)*
 
 The range string for which messages to return.
 
-### `fetch` *(object, optional)*
+#### `fetch` *(object, optional)*
 
 The `fetch` object expected by the imap module.
 
