@@ -1,5 +1,7 @@
 # imap-scan-box
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/saibotsivad/imap-scan-many-boxes.svg)](https://greenkeeper.io/)
+
 This module takes an instance of the
 [imap](https://github.com/mscdex/node-imap) module, and
 an array of box names (also known as "folders"), and returns
